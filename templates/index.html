@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Placement Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px #000;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form div {
+            margin: 10px 0;
+        }
+
+        label {
+            font-weight: bold;
+            display: inline-block;
+            width: 200px;
+        }
+
+        input {
+            width: calc(100% - 210px);
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Placement Prediction</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <div>
+                <label for="ssc_percentage">SSC Percentage:</label>
+                <input type="text" id="ssc_percentage" name="ssc_percentage" required>
+            </div>
+            <div>
+                <label for="hsc_percentage">HSC Percentage:</label>
+                <input type="text" id="hsc_percentage" name="hsc_percentage" required>
+            </div>
+            <div>
+                <label for="degree_percentage">Degree Percentage:</label>
+                <input type="text" id="degree_percentage" name="degree_percentage" required>
+            </div>
+            <div>
+                <label for="mba_percent">MBA Percentage:</label>
+                <input type="text" id="mba_percent" name="mba_percent" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
